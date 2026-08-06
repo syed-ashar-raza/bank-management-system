@@ -1,0 +1,51 @@
+[
+    {
+        "customer": {
+            "name": "Ashar Raza",
+            "phone": "03476371697"
+        },
+        "account_number": "ACC117",
+        "balance": 1679950000.0,
+        "transactions": [
+            {
+                "transaction_type": "Deposit",
+                "amount": 721450000.0,
+                "date": "07-08-2026 12:21:32 AM"
+            },
+            {
+                "transaction_type": "Transfer Out to Rubab Ashar",
+                "amount": 256000000.0,
+                "date": "07-08-2026 12:21:32 AM"
+            }
+        ]
+    },
+    {
+        "customer": {
+            "name": "Rubab Ashar",
+            "phone": "03426203956"
+        },
+        "account_number": "ACC118",
+        "balance": 19615500000.0,
+        "transactions": [
+            {
+                "transaction_type": "Transfer In from Ashar Raza",
+                "amount": 256000000.0,
+                "date": "07-08-2026 12:21:32 AM"
+            },
+            {
+                "transaction_type": "Deposit",
+                "amount": 7214500000.0,
+                "date": "07-08-2026 12:21:32 AM"
+            }
+        ]
+    },
+    {
+        "customer": {
+            "name": "Ajmal",
+            "phone": "0365565556"
+        },
+        "account_number": "ACC119",
+        "balance": 12325656.0,
+        "transactions": []
+    }
+]
