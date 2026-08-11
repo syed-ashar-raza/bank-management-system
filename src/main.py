@@ -98,9 +98,10 @@ def display_menu() -> None:
     print("3. Withdraw")
     print("4. Transfer")
     print("5. Display Accounts")
-    print("6. Save Data")
-    print("7. Display Transactions")
-    print("8. Exit")
+    print("6. Search Account")
+    print("7. Save Data")
+    print("8. Display Transactions")
+    print("9. Exit")
 
 
 def create_account(
@@ -307,6 +308,41 @@ def display_accounts(
 
     bank.display_accounts()
 
+def search_account(
+    bank: Bank
+) -> None:
+    """
+    Search for an account by account number.
+
+    Parameters:
+        bank (Bank):
+            Bank instance managing accounts.
+
+    Returns:
+        None
+    """
+
+    account_number = input(
+        "Enter Account Number: "
+    )
+
+    try:
+
+        account = bank.find_account(
+            account_number
+        )
+
+        print("\n✅ Account Found!")
+        print("-" * 28)
+
+        account.display_balance()
+
+        print("-" * 28)
+
+    except AccountNotFoundError as error:
+
+        handle_error(error)
+
 
 def save_accounts(
     bank: Bank
@@ -416,13 +452,17 @@ def main() -> None:
 
         elif choice == "6":
 
-            save_accounts(bank)
+            search_account(bank)
 
         elif choice == "7":
 
-            display_transactions(bank)
+            save_accounts(bank)
 
         elif choice == "8":
+
+            display_transactions(bank)
+
+        elif choice == "9":
 
             FileManager.save_accounts(
                 bank.accounts
@@ -442,7 +482,7 @@ def main() -> None:
 
             print(
                 "❌ Invalid choice! "
-                "Please select a number from 1 to 8."
+                "Please select a number from 1 to 9."
             )
 
 
