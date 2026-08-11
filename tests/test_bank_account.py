@@ -85,3 +85,33 @@ def test_transfer():
 
     assert sender.get_balance() == 4000
     assert receiver.get_balance() == 3000
+
+def test_search_transactions():
+    account = create_test_account()
+
+    account.deposit(2000)
+
+    results = account.search_transactions("Deposit")
+
+    assert len(results) == 1
+    assert results[0].transaction_type == "Deposit"
+    assert results[0].amount == 2000
+
+def test_search_transactions_case_insensitive():
+    account = create_test_account()
+
+    account.deposit(2000)
+
+    results = account.search_transactions("deposit")
+
+    assert len(results) == 1
+    assert results[0].transaction_type == "Deposit"
+
+def test_search_transactions_no_match():
+    account = create_test_account()
+
+    account.deposit(2000)
+
+    results = account.search_transactions("Withdraw")
+
+    assert results == []

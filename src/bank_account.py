@@ -92,6 +92,29 @@ class BankAccount:
             f"${self.__balance:,.0f}"
         )
 
+    def search_transactions(
+    self,
+    transaction_type: str
+) -> list[Transaction]:
+        """
+        Search transactions by transaction type.
+
+        Parameters:
+            transaction_type (str):
+                Transaction type to search for.
+
+        Returns:
+            list[Transaction]:
+                Matching transactions.
+        """
+
+        return [
+            transaction
+            for transaction in self.transactions
+            if transaction.transaction_type.lower()
+            == transaction_type.lower()
+        ]
+
 
     def validate_amount(
         self,

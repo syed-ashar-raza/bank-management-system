@@ -101,7 +101,8 @@ def display_menu() -> None:
     print("6. Search Account")
     print("7. Save Data")
     print("8. Display Transactions")
-    print("9. Exit")
+    print("9. Search Transactions")
+    print("10. Exit")
 
 
 def create_account(
@@ -397,6 +398,57 @@ def display_transactions(
 
         handle_error(error)
 
+def search_transactions(bank: Bank) -> None:
+    """
+    Search transactions by transaction type.
+
+    Parameters:
+        bank (Bank):
+            Bank instance managing accounts.
+
+    Returns:
+        None
+    """
+
+    try:
+
+        account_number = input(
+            "Enter Account Number: "
+        )
+
+        account = bank.find_account(
+            account_number
+        )
+
+        transaction_type = input(
+            "Enter Transaction Type: "
+        )
+
+        results = account.search_transactions(
+            transaction_type
+        )
+
+        if not results:
+
+            print(
+                "No matching transactions found."
+            )
+
+            return
+
+        print(
+            f"\nTransactions matching "
+            f"'{transaction_type}':\n"
+        )
+
+        for transaction in results:
+
+            transaction.display_transaction()
+
+    except AccountNotFoundError as error:
+
+        handle_error(error)
+
 
 def main() -> None:
     """
@@ -464,8 +516,12 @@ def main() -> None:
 
         elif choice == "9":
 
+            search_transactions(bank)
+
+        elif choice == "10":
+
             FileManager.save_accounts(
-                bank.accounts
+            bank.accounts
             )
 
             print(
@@ -482,7 +538,7 @@ def main() -> None:
 
             print(
                 "❌ Invalid choice! "
-                "Please select a number from 1 to 9."
+                "Please select a number from 1 to 10."
             )
 
 
