@@ -1,86 +1,54 @@
-# 🏦 Bukhari Bank Management System
+# Bukhari Bank Management System
 
-**Version:** v1.0.0
+A Python-based command-line banking application demonstrating object-oriented design, modular architecture, JSON persistence, custom exception handling, and automated testing with pytest.
 
-A professional command-line Bank Management System built with Python using Object-Oriented Programming (OOP), JSON data persistence, custom exception handling, and automated testing with pytest.
+The project simulates core banking operations while emphasizing maintainable code organization, separation of responsibilities, data persistence, validation, and testable business logic.
 
-This project simulates a real-world banking system where users can create accounts, manage customers, perform banking transactions, and permanently store data using JSON file handling.
+## Features
 
----
-
-# 📌 Project Description
-
-The **Bukhari Bank Management System** is a console-based banking application developed in Python as a professional software engineering project.
-
-The main objective of this project is to practice clean code, object-oriented programming, modular software architecture, testing, and professional Python development practices.
-
-This project demonstrates:
-
-- Object-Oriented Programming (OOP)
-- Clean Code Organization
-- Professional Multi-file Architecture
-- Exception Handling
-- JSON File Handling
-- Data Persistence
-- Unit Testing with pytest
-- Code Refactoring
-- DRY (Don't Repeat Yourself) Principle
-
----
-
-# 🚀 Features
-
-- Create customer accounts
+- Create and manage customer accounts
 - Create bank accounts
-- Deposit money
-- Withdraw money
-- Transfer money between accounts
-- Display account details
+- Deposit funds
+- Withdraw funds
+- Transfer funds between accounts
+- Search for accounts
+- Display account information
 - View transaction history
-- Record every transaction automatically
-- Save account data permanently
-- Automatically load saved accounts
-- Duplicate account prevention
-- Custom exception handling
-- Account data validation
-- Professional project structure
-- Automated unit testing
+- Record transactions automatically
+- Persist account data using JSON
+- Restore saved accounts and transaction history
+- Prevent duplicate account numbers
+- Validate account and customer data
+- Handle domain-specific errors with custom exceptions
+- Automated testing with pytest
 
----
-
-# 🛠 Technologies Used
+## Technical Stack
 
 - Python 3
-- Object-Oriented Programming (OOP)
-- Classes and Objects
-- Encapsulation
-- Composition
-- Exception Handling
-- JSON File Handling
+- Object-Oriented Programming
+- JSON serialization and persistence
 - pathlib
+- Custom exception hierarchy
 - pytest
-- Multi-file Project Architecture
+- Modular multi-file architecture
 
----
+## Architecture
 
-# 📦 Requirements
+The application separates responsibilities across focused modules.
 
-- Python 3.11 or later
-- pytest
+### Core Components
 
-Install dependencies:
+- **Bank** — Coordinates bank-level account management and operations.
+- **BankAccount** — Encapsulates account state and banking operations.
+- **Customer** — Stores customer information associated with an account.
+- **Transaction** — Represents individual account transactions.
+- **FileManager** — Handles JSON serialization and persistence.
+- **Exceptions** — Provides domain-specific application exceptions.
 
-```bash
-pip install -r requirements.txt
-```
-
----
-
-# 📂 Project Structure
+## Project Structure
 
 ```text
-Bank Management/
-│
+bank-management-system/
 ├── src/
 │   ├── __init__.py
 │   ├── main.py
@@ -90,224 +58,120 @@ Bank Management/
 │   ├── transaction.py
 │   ├── file_manager.py
 │   └── exceptions.py
-│
 ├── tests/
 │   ├── __init__.py
+│   ├── test_bank.py
 │   ├── test_bank_account.py
 │   └── test_file_manager.py
-│
 ├── data/
 │   └── accounts.json
-│
 ├── .gitignore
-├── requirements.txt
 ├── LICENSE
 ├── pytest.ini
+├── requirements.txt
 └── README.md
 ```
 
----
+## Installation
 
-# 🏗 Project Architecture
-
-```text
-                Customer
-                    │
-                    │
-            BankAccount
-                    │
-        ┌───────────┴───────────┐
-        │                       │
- Transaction History        Account Balance
-        │
-        │
-   Transaction
-
-
-                 Bank
-                   │
-        ┌──────────┴──────────┐
-        │                     │
- Create Account       Manage Accounts
-
-
-            FileManager
-                  │
-                  │
-          data/accounts.json
-```
-
----
-
-# ⚙️ How the System Works
-
-## 👤 Customer
-
-Stores customer information:
-
-- Customer Name
-- Phone Number
-
----
-
-## 🏦 Bank Account
-
-Manages:
-
-- Account Number
-- Balance
-- Deposits
-- Withdrawals
-- Transfers
-- Transaction History
-
----
-
-## 💳 Transaction
-
-Records:
-
-- Transaction Type
-- Amount
-- Date and Time
-
-Examples:
-
-- Deposit
-- Withdraw
-- Transfer In
-- Transfer Out
-
----
-
-## 💾 File Manager
-
-Responsible for:
-
-- Saving accounts into JSON
-- Loading saved accounts
-- Restoring transaction history
-- Permanent data storage
-
----
-
-# ▶️ How to Run
-
-### Step 1
-
-Clone or download the project.
-
-### Step 2
-
-Open the project folder.
-
-### Step 3
-
-Open a terminal.
-
-### Step 4
-
-Run:
+Clone the repository:
 
 ```bash
-python src/main.py
+git clone https://github.com/syed-ashar-raza/bank-management-system.git
+cd bank-management-system
 ```
 
----
+Create a virtual environment:
 
-# 💾 Data Storage
+```bash
+python -m venv .venv
+```
 
-The project uses JSON for permanent data storage.
+Activate it on Windows:
 
-Data is stored in:
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+Run the application from the project root:
+
+```powershell
+python -m src.main
+```
+
+The application provides menu-driven access to account creation, deposits, withdrawals, transfers, account searches, transaction history, and data persistence.
+
+## Data Persistence
+
+Account data and transaction history are stored in:
 
 ```text
 data/accounts.json
 ```
 
-Stored information includes:
+The application loads existing account data when started and saves updated account information to JSON.
 
-- Customer Information
-- Account Number
-- Current Balance
-- Transaction History
+## Testing
 
----
+Run the complete automated test suite:
 
-# ✅ Running Tests
-
-Run all automated tests:
-
-```bash
-pytest
+```powershell
+pytest -q
 ```
 
-Current Status:
+Current verification:
 
-- ✅ 7/7 Tests Passing
+```text
+12 passed
+```
 
----
+## Engineering Practices
 
-# 🧠 Concepts Practiced
-
-- Python Programming
-- Object-Oriented Programming
-- Classes and Objects
-- Constructors
+- Object-oriented design
 - Encapsulation
 - Composition
-- Exception Handling
-- Custom Exceptions
-- File Handling
-- JSON Serialization
-- Multi-file Python Projects
-- Project Packaging
-- Unit Testing
-- Code Refactoring
-- DRY Principle
-- Clean Code
-- Professional Documentation
+- Separation of responsibilities
+- Modular architecture
+- Domain-specific exception handling
+- JSON serialization and deserialization
+- File-system handling with pathlib
+- Input validation
+- Automated testing
+- Refactoring
+- DRY principles
+- Maintainable code organization
+- Git-ready project structure
 
----
+## Design Notes
 
-# 🔮 Future Improvements
+The project uses JSON persistence to demonstrate application architecture and Python software engineering without unnecessary infrastructure.
 
-Possible future upgrades include:
+Banking logic, persistence, and command-line interaction are separated into dedicated modules, making the application easier to test, maintain, and extend.
 
-- Graphical User Interface (GUI)
-- Database Integration (SQLite/PostgreSQL/MySQL)
-- User Authentication
-- Password Encryption
-- Admin Dashboard
-- ATM Simulation
-- Online Banking
-- Interest Calculation
-- Loan Management
-- REST API
-- Web Version (Flask/Django)
-- Email Notifications
+## Project Status
 
----
+The current implementation is functional and verified with an automated test suite.
 
-# 👨‍💻 Author
+This project is maintained as part of a professional AI Developer portfolio to demonstrate foundational software engineering capability supporting larger Python, data, machine learning, and AI systems.
+
+## Author
 
 **Syed Ashar Raza**
 
 Bachelor of Science in Artificial Intelligence (BSAI)
 
-Python & AI Developer
+AI & Python Developer
 
----
+## License
 
-# 📄 License
+MIT License
 
-This project is licensed under the **MIT License**.
-
-See the **LICENSE** file for details.
-
-## Development Status
-
-Version 1.0.0 released.
-
-Branch Practice — Feature branch created successfully.
-Account search feature development started.
+See the `LICENSE` file for details.

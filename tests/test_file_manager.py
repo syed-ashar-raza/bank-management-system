@@ -1,11 +1,9 @@
-from pathlib import Path
-
 from src.file_manager import FileManager
 from src.bank_account import BankAccount
 from src.customer import Customer
 
-def create_test_accounts():
 
+def create_test_accounts():
     customer = Customer(
         "Ashar Raza",
         "03476371697"
@@ -21,16 +19,18 @@ def create_test_accounts():
         account.account_number: account
     }
 
-def test_save_and_load_accounts(tmp_path):
 
+def test_save_and_load_accounts(tmp_path):
     test_file = tmp_path / "accounts.json"
 
     accounts = create_test_accounts()
 
-    FileManager.save_accounts(
+    saved = FileManager.save_accounts(
         accounts,
         test_file
     )
+
+    assert saved is True
 
     loaded_accounts = FileManager.load_accounts(
         test_file
